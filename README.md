@@ -17,7 +17,7 @@ Using the script might get you banned from Ticketswap (usage of a bot is against
 Run with:
 
 ```shell script
-ticketswapper <URL_TO_EVENT> <TOKEN> [cluster mode=true|false]
+ticketswapper -t <TOKEN> -u <EVENT_URL> [-o <TICKET_OPTION_1_OR_HIGHER>] [-c <CLUSTER_MODE (TRUE OR FALSE)>]
 ```
 
 ### URL
@@ -43,12 +43,17 @@ Cluster mode will start the application multiple times on the computer. It will 
 Example for an event:
 
 ```shell script
-ticketswapper https://www.ticketswap.com/event/museumnacht-amsterdam-2019/6135485a-7ccd-470d-b2ba-61ba58726a92 NlG3kR3lR3khNkRGwZi3TThNzINjkNwN22R2lTj2lGINNhEjNTZETITwIi3izkzTjTZkIkkZiETiEkwhGTz3z23h3Z33
+ticketswapper -t NlG3kR3lR3khNkRGwZi3TThNzINjkNwN22R2lTj2lGINNhEjNTZETITwIi3izkzTjTZkIkkZiETiEkwhGTz3z23h3Z33 -u https://www.ticketswap.com/event/museumnacht-amsterdam-2019/6135485a-7ccd-470d-b2ba-61ba58726a92 
 ```
 
 Another example with cluster mode.
 
 ```shell script
-ticketswapper https://www.ticketswap.com/event/museumnacht-amsterdam-2019/6135485a-7ccd-470d-b2ba-61ba58726a92 NlG3kR3lR3khNkRGwZi3TThNzINjkNwN22R2lTj2lGINNhEjNTZETITwIi3izkzTjTZkIkkZiETiEkwhGTz3z23h3Z33 true
+ticketswapper -t NlG3kR3lR3khNkRGwZi3TThNzINjkNwN22R2lTj2lGINNhEjNTZETITwIi3izkzTjTZkIkkZiETiEkwhGTz3z23h3Z33 -u https://www.ticketswap.com/event/museumnacht-amsterdam-2019/6135485a-7ccd-470d-b2ba-61ba58726a92 -c true 
 ```
 
+Another example with ticket option number 2
+
+```shell script
+ticketswapper -t NlG3kR3lR3khNkRGwZi3TThNzINjkNwN22R2lTj2lGINNhEjNTZETITwIi3izkzTjTZkIkkZiETiEkwhGTz3z23h3Z33 -u https://www.ticketswap.com/event/museumnacht-amsterdam-2019/6135485a-7ccd-470d-b2ba-61ba58726a92 -o 2 
+```

@@ -1,6 +1,6 @@
 {
   "name": "ticketswapper",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A bot for https://ticketswap.nl/. It adds tickets for an event to the cart.",
   "main": "index.js",
   "homepage": "https://github.com/Ecostack/TicketSwapper",
