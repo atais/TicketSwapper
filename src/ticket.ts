@@ -33,10 +33,17 @@ async function buyTicket(token: string, ticket: AvailableTicket): Promise<boolea
     });
 
     const cartId = _.get(result, '[0].data.addTicketsToCart.cart.id')
-    const errors = _.get(result, '[0].errors',[]).concat(_.get(result, '[0].data.addTicketsToCart.errors',[]))
+    const errors = _.get(result, '[0].errors', []).concat(_.get(result, '[0].data.addTicketsToCart.errors', []))
 
     if (errors && errors.length > 0) {
-        console.log(new Date(), 'Could not reservate ticket.', errors[0].extensions.code, errors[0].message)
+        const extensionsErrorCode = errors[0].extensions && errors[0].extensions.code
+        const message = [
+            errors[0].code,
+            extensionsErrorCode,
+            errors[0].message
+        ].filter(m => m).join(' - ')
+
+        console.log(new Date(), 'Could not reservate ticket.', message)
     } else if (cartId) {
         const msg = `Reservated ticket ${ticket.listingId}`
         console.log(new Date(), msg)
