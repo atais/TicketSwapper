@@ -33,7 +33,7 @@ async function addTicket(token: string, {listingId, hash}: CartAddTicket): Promi
     ];
 
     const headers = {
-        Authorization: token,
+        Authorization: `Bearer ${token}`,
     };
 
     const result = await postRequest({url: 'https://api.ticketswap.com/graphql/public/batch', body, headers})

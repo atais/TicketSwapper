@@ -36,7 +36,7 @@ async function buyTicket(token: string, ticket: AvailableTicket): Promise<boolea
     const errors = _.get(result, '[0].errors',[]).concat(_.get(result, '[0].data.addTicketsToCart.errors',[]))
 
     if (errors && errors.length > 0) {
-        console.log(new Date(), 'Could not reservate ticket.', errors[0].code, errors[0].message)
+        console.log(new Date(), 'Could not reservate ticket.', errors[0].extensions.code, errors[0].message)
     } else if (cartId) {
         const msg = `Reservated ticket ${ticket.listingId}`
         console.log(new Date(), msg)
