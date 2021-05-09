@@ -1,12 +1,10 @@
 import {Event} from "./event";
 import {Ticket} from "./ticket";
 
-export async function start(url: string, token: string, ticketOption = 1) {
+export async function start(eventId: string, token: string, ticketOption = 1) {
     if(ticketOption < 1) {
         throw new Error("Ticket option should be at least 1 or higher.")
     }
-
-    const eventId = await Event.getEventIdFromURL(url);
 
     async function loop() {
         const data = await Event.getData(eventId)

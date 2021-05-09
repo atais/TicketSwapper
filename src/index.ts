@@ -7,9 +7,9 @@ import cluster from 'cluster';
 const numCPUs = require('os').cpus().length;
 
 const argv = yargs
-    .option('url', {
-        alias: 'u',
-        description: 'Event URL',
+    .option('id', {
+        alias: 'i',
+        description: 'Event ID',
         type: 'string',
     })
     .option('cluster', {
@@ -28,7 +28,7 @@ const argv = yargs
         description: 'Ticketswap token',
         type: 'string',
     })
-    .demandOption(['u','t'])
+    .demandOption(['i','t'])
     .help()
     .alias('help', 'h')
     .argv;
@@ -46,5 +46,5 @@ if (argv.cluster && cluster.isMaster) {
         console.log(`worker ${worker.process.pid} died`);
     });
 } else {
-    start(argv.url, argv.token, argv.ticketoption)
+    start(argv.id, argv.token, argv.ticketoption)
 }

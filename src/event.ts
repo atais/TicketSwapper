@@ -23,44 +23,8 @@ async function getData(eventId: string): Promise<EventData> {
     return result
 }
 
-function getEventIdsFromURL(url: string) {
-    const rawId = getRawIdFromURL(url);
-
-    console.log(`Found id: ${rawId}`)
-    const eventType = Buffer.from(`EventType:${rawId}`).toString('base64')
-    const eventId = Buffer.from(`Event:${rawId}`).toString('base64')
-    return {eventId, eventType}
-}
-
-async function testEventId(id) {
-    try {
-        const data = await Event.getData(id)
-        const result = _.get(data, '[0].data.node.id', null)
-        return result === id;
-    } catch (err) {
-        console.error(`This should not have happened.`, err)
-        return false
-    }
-}
-
-async function getEventIdFromURL(url: string) {
-    const {eventType, eventId} = getEventIdsFromURL(url)
-
-    if (await testEventId(eventType)) {
-        return eventType;
-    }
-
-    if (await testEventId(eventId)) {
-        return eventId;
-    }
-
-    throw new Error('Event id could not be used.')
-}
-
 export const Event = {
-    getData,
-    testEventId,
-    getEventIdFromURL
+    getData
 }
 
 
